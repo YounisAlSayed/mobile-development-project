@@ -1,4 +1,4 @@
-Groupe Memebers
+Group Members
 Younis AlSayed 1230398
 Ibrahim Arab 1230182
 Ibrahim Moudi 1231427
