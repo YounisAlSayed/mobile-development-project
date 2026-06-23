@@ -3,8 +3,6 @@ package com.example.recyclerviewwebservice.model;
 public final class PriceCalculator {
     private static final int MIN_PRICE_CENTS = 799;
     private static final int PRICE_RANGE_CENTS = 9201;
-    private static final int POSITION_BASE = 26;
-    private static final int ROLLING_MULTIPLIER = 31;
 
     private PriceCalculator() {
     }
