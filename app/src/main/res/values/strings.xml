@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecyclerShop Volley</string>
+    <string name="screen_title">Volley Book Shop</string>
+    <string name="loading">Loading products…</string>
+    <string name="loading_more">Loading more products</string>
+    <string name="reload_products">Reload products from page one</string>
+    <string name="items_per_pack">Items per pack</string>
+    <string name="products_loaded_range">%1$d - %2$d</string>
+    <string name="product_cover">Product cover image</string>
+    <string name="favorite">Favorite</string>
+    <string name="add_to_favorites">Add %1$s to favorites</string>
+    <string name="remove_from_favorites">Remove %1$s from favorites</string>
+    <string name="load_failed">Unable to load products</string>
+    <string name="product_details">Product details</string>
+    <string name="back">Back</string>
+    <string name="detail_author">Author</string>
+    <string name="detail_price">Prototype price</string>
+    <string name="detail_year">First published</string>
+    <string name="detail_editions">Catalog editions</string>
+    <string name="detail_description">Book description</string>
+    <string name="detail_description_loading">Loading book description</string>
+    <string name="detail_description_unavailable">No description is available for this book.</string>
+    <string name="detail_unknown">Not available</string>
+
+    <string-array name="page_size_options">
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+        <item>100</item>
+    </string-array>
+</resources>
