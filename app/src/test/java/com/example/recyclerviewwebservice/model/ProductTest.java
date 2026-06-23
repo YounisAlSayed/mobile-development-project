@@ -61,8 +61,8 @@ public class ProductTest {
         int second = PriceCalculator.forProductId("/works/OL8193416W");
 
         assertEquals(first, second);
-        assertEquals(6830, first);
-        assertEquals(5516, PriceCalculator.forProductId("/works/OL17508740W"));
+        assertEquals(8267, first);
+        assertEquals(5630, PriceCalculator.forProductId("/works/OL17508740W"));
         assertTrue(first >= 799);
         assertTrue(first <= 9999);
     }

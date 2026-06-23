@@ -3,7 +3,6 @@ package com.example.recyclerviewwebservice.network;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public final class OpenLibraryWorkParser {
 
         String description = readTextValue(response.description);
         if (description.isEmpty()) {
-            description = readTextValue(response.firstSentence);
+            description = readTextValue(response.first_sentence);
         }
         if (description.isEmpty()) {
             description = buildSubjectSummary(response.subjects);
@@ -64,10 +63,7 @@ public final class OpenLibraryWorkParser {
 
     private static final class WorkResponse {
         JsonElement description;
-
-        @SerializedName("first_sentence")
-        JsonElement firstSentence;
-
+        JsonElement first_sentence;
         List<String> subjects;
     }
 }

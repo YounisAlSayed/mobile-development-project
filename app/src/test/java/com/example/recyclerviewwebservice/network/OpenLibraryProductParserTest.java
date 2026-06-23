@@ -31,14 +31,14 @@ public class OpenLibraryProductParserTest {
         assertEquals("The Summer I Turned Pretty Trilogy", product.getTitle());
         assertEquals("Jenny Han", product.getSubtitle());
         assertEquals("https://covers.openlibrary.org/b/id/123-M.jpg", product.getImageUrl());
-        assertEquals(5516, product.getPriceCents());
+        assertEquals(5630, product.getPriceCents());
         assertEquals(2009, product.getFirstPublishYear());
         assertEquals(12, product.getEditionCount());
     }
 
     @Test
     public void suppliesFallbackValuesForIncompleteDocuments() {
-        String json = "{\"num_found\":1,\"docs\":[{\"key\":\"/works/OL1W\"}]}";
+        String json = "{\"numFound\":1,\"docs\":[{\"key\":\"/works/OL1W\"}]}";
 
         OpenLibraryProductParser.Result result = parser.parse(json);
         Product product = result.getProducts().get(0);

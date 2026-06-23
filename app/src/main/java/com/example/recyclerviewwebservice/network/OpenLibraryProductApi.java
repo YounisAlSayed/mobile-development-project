@@ -19,7 +19,7 @@ public class OpenLibraryProductApi {
     private static final String FIELDS =
             "key,title,author_name,cover_i,first_publish_year,edition_count";
     private static final String REQUEST_TAG = "OPEN_LIBRARY_PRODUCTS";
-    private static final int REQUEST_TIMEOUT_MS = 30_000;
+    private static final int REQUEST_TIMEOUT_MS = 30000;
 
     private final VolleyRequestQueue requestQueue;
     private final OpenLibraryProductParser parser = new OpenLibraryProductParser();

@@ -3,7 +3,6 @@ package com.example.recyclerviewwebservice.network;
 import com.example.recyclerviewwebservice.model.PriceCalculator;
 import com.example.recyclerviewwebservice.model.Product;
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,31 +19,31 @@ public final class OpenLibraryProductParser {
             return new Result(Collections.emptyList(), 0L);
         }
 
-        List<Document> documents = response.documents == null
+        List<Document> documents = response.docs == null
                 ? Collections.emptyList()
-                : response.documents;
+                : response.docs;
         List<Product> products = new ArrayList<>(documents.size());
 
         for (int index = 0; index < documents.size(); index++) {
             Document document = documents.get(index);
             String title = valueOrDefault(document.title, "Untitled product");
             String id = valueOrDefault(
-                    document.id,
+                    document.key,
                     "/unknown/" + index + "/" + title.hashCode()
             );
 
             products.add(new Product(
                     id,
                     title,
-                    joinAuthors(document.authors),
-                    buildCoverUrl(id, document.coverId),
+                    joinAuthors(document.author_name),
+                    buildCoverUrl(id, document.cover_i),
                     PriceCalculator.forProductId(id),
-                    document.firstPublishYear,
-                    document.editionCount
+                    document.first_publish_year,
+                    document.edition_count
             ));
         }
 
-        return new Result(products, response.totalItems);
+        return new Result(products, response.numFound);
     }
 
     private String valueOrDefault(String value, String fallback) {
@@ -93,29 +92,16 @@ public final class OpenLibraryProductParser {
     }
 
     private static final class SearchResponse {
-        @SerializedName(value = "numFound", alternate = {"num_found"})
-        long totalItems;
-
-        @SerializedName("docs")
-        List<Document> documents;
+        long numFound;
+        List<Document> docs;
     }
 
     private static final class Document {
-        @SerializedName("key")
-        String id;
-
+        String key;
         String title;
-
-        @SerializedName("author_name")
-        List<String> authors;
-
-        @SerializedName("cover_i")
-        long coverId;
-
-        @SerializedName("first_publish_year")
-        int firstPublishYear;
-
-        @SerializedName("edition_count")
-        int editionCount;
+        List<String> author_name;
+        long cover_i;
+        int first_publish_year;
+        int edition_count;
     }
 }
