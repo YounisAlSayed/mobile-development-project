@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RecyclerShop Volley</string>
-    <string name="screen_title">Volley Book Shop</string>
+    <string name="screen_title">Book Shop</string>
     <string name="loading">Loading products…</string>
     <string name="loading_more">Loading more products</string>
     <string name="reload_products">Reload products from page one</string>

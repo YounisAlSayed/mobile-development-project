@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int LOAD_MORE_THRESHOLD = 5;
     private static final String PAGE_SIZE_PREFERENCE = "page_size";
 
-    private enum LoadDirection {
-        FORWARD,
-        BACKWARD
-    }
-
     private OpenLibraryProductApi api;
     private ProductAdapter adapter;
     private TextView statusText;
@@ -173,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        loadPage(LoadDirection.FORWARD);
+        loadPage(true);
     }
 
     private void loadPreviousPage() {
@@ -181,13 +176,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        loadPage(LoadDirection.BACKWARD);
+        loadPage(false);
     }
 
-    private void loadPage(LoadDirection direction) {
+    private void loadPage(boolean loadForward) {
         long requestWindowStart = windowStartIndex;
         long requestWindowEnd = requestWindowStart + adapter.getItemCount();
-        long targetIndex = direction == LoadDirection.FORWARD
+        long targetIndex = loadForward
                 ? requestWindowEnd
                 : requestWindowStart - 1L;
         if (targetIndex < 0) {
@@ -226,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                         ? 0
                         : firstVisibleView.getTop() - recyclerView.getPaddingTop();
 
-                if (direction == LoadDirection.FORWARD) {
+                if (loadForward) {
                     int fromIndex = (int) Math.max(
                             0L,
                             Math.min((long) products.size(), requestWindowEnd - pageStartIndex)
@@ -270,8 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 long retainedEnd = windowStartIndex + adapter.getItemCount();
                 reachedEnd = totalAvailable > 0
                         ? retainedEnd >= totalAvailable
-                        : direction == LoadDirection.FORWARD
-                        && products.size() < requestedPageSize;
+                        : loadForward && products.size() < requestedPageSize;
 
                 loading = false;
                 updateLoadedStatus();

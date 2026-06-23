@@ -1,6 +1,6 @@
 package com.example.recyclerviewwebservice.network;
 
-import com.example.recyclerviewwebservice.model.DemoPriceCalculator;
+import com.example.recyclerviewwebservice.model.PriceCalculator;
 import com.example.recyclerviewwebservice.model.Product;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -38,7 +38,7 @@ public final class OpenLibraryProductParser {
                     title,
                     joinAuthors(document.authors),
                     buildCoverUrl(id, document.coverId),
-                    DemoPriceCalculator.forProductId(id),
+                    PriceCalculator.forProductId(id),
                     document.firstPublishYear,
                     document.editionCount
             ));

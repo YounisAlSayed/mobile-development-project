@@ -1,12 +1,12 @@
 package com.example.recyclerviewwebservice.model;
 
-public final class DemoPriceCalculator {
+public final class PriceCalculator {
     private static final int MIN_PRICE_CENTS = 799;
     private static final int PRICE_RANGE_CENTS = 9_201;
     private static final int POSITION_BASE = 26;
     private static final int ROLLING_MULTIPLIER = 31;
 
-    private DemoPriceCalculator() {
+    private PriceCalculator() {
     }
 
     public static int forProductId(String productId) {

@@ -57,12 +57,12 @@ public class ProductTest {
 
     @Test
     public void demoPricesAreStableAndInsideConfiguredRange() {
-        int first = DemoPriceCalculator.forProductId("/works/OL8193416W");
-        int second = DemoPriceCalculator.forProductId("/works/OL8193416W");
+        int first = PriceCalculator.forProductId("/works/OL8193416W");
+        int second = PriceCalculator.forProductId("/works/OL8193416W");
 
         assertEquals(first, second);
         assertEquals(6830, first);
-        assertEquals(5516, DemoPriceCalculator.forProductId("/works/OL17508740W"));
+        assertEquals(5516, PriceCalculator.forProductId("/works/OL17508740W"));
         assertTrue(first >= 799);
         assertTrue(first <= 9999);
     }
@@ -70,7 +70,7 @@ public class ProductTest {
     @Test
     public void generatedPricesStayInsideRangeForManyIds() {
         for (int index = 0; index < 10_000; index++) {
-            int price = DemoPriceCalculator.forProductId("/works/OL" + index + "W");
+            int price = PriceCalculator.forProductId("/works/OL" + index + "W");
             assertTrue(price >= 799);
             assertTrue(price <= 9999);
         }
